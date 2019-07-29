@@ -6,11 +6,13 @@ namespace matrix
     {
         static void Main(string[] args)
         {
+            // dimension input
             Console.WriteLine("Welcome to matrix interface, Please enter dimension of matrix:\n");
             int dimension = Convert.ToInt32(Console.ReadLine());
             Matrix matrixA = new Matrix(dimension);
             Matrix matrixB = new Matrix(dimension);
 
+            // matrix input
             Console.WriteLine("Please input matrix:\n");
             int[] inputArray = new int[matrixA.Length];
             for (int i = 0; i < matrixA.Length; i ++)
@@ -20,11 +22,17 @@ namespace matrix
             matrixA.Add(inputArray);
             matrixB.Add(inputArray);
 
+            // show matrix and matrix transpose
             Console.WriteLine("Your matrix input is:\n" );
             Console.WriteLine(matrixA);
             Console.WriteLine("Your matrix transpose output is:\n" );
             matrixB.Transpose();
             Console.WriteLine(matrixB);
+
+            // show matrix multiply output;
+            Matrix matrixOutput = matrixA.Multiply(matrixB);
+            Console.WriteLine("Your matrix multiply matrix transpose output is: \n");
+            Console.WriteLine(matrixOutput);
             
         }
     }
@@ -44,7 +52,15 @@ namespace matrix
         {
             get
             {
-                return (Row) * (Row);
+                return Row * Row;
+            }
+        }
+
+        public int[,] Array
+        {
+            get
+            {
+                return matrix;
             }
         }
 
@@ -89,11 +105,32 @@ namespace matrix
             }
         }
 
-        // public Matrix multi(Matrix anotherMatrix)
-        // {
-        //     // calculate multi another Matrix
+        public Matrix Multiply(Matrix matrixB)
+        {
+            // calculate multiply another Matrix
+            if (matrixB.Dimension != Dimension)
+            {
+                throw new ArgumentException("Two matrix Row is different, please check again!");
 
-        // }
+            }
+            else
+            {
+                Matrix matrixResult = new Matrix(Dimension);
+                int[] matrixArray = new int[Length];
+
+                for (int i = 0; i < Length; i++)
+                {
+                    int sum = 0;
+                    for(int col = 0; col < Row; col++)
+                    {
+                        sum = sum + matrix[i/Row,col] * matrixB.Array[col,i%Row];
+                    }
+                    matrixArray[i] = sum;
+                }
+                matrixResult.Add(matrixArray);
+                return matrixResult;
+            }
+        }
 
         public override string ToString()
         {
@@ -112,6 +149,5 @@ namespace matrix
             }
             return stringArray;
         }
-
     }
 }
