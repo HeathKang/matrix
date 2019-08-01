@@ -32,8 +32,9 @@ dotnet publish -c Realese -r win-x64
 ```
 ## Usage
 1. Input the dimension of matrix, like `d`;
-2. Then input `dxd` number as matrixA;
-3. Finally program calculate matrixB which is the transpose of matrixA and the result of ```matrixA x matrixB```
+2. Input `dxd` number as matrixA;
+3. Input `dxd` number as matrixB;
+4. Finally program calculate the transpose of matrixB and the result of ```matrixA x matrixB_transpose```
 ## Example
 
 
@@ -42,7 +43,7 @@ $ dotnet run // or use compiled file ./matrix.exe
 Welcome to matrix interface, Please enter dimension of matrix:
 
 3
-Please input matrix:
+Please input matrixA:
 
 1
 2
@@ -53,23 +54,40 @@ Please input matrix:
 7
 8
 9
-Your matrix input is:
+Please input matrixB:
+
+9 
+8
+7
+6
+5
+4
+3
+2
+1
+Your matrixA input is:
 
 1 2 3 
 4 5 6 
 7 8 9 
 
-Your matrix transpose output is:
+Your matrixB input is:
 
-1 4 7 
-2 5 8 
-3 6 9 
+9 8 7 
+6 5 4 
+3 2 1 
+
+Your matrixB transpose output is:
+
+9 6 3 
+8 5 2 
+7 4 1 
 
 Your matrix multiply matrix transpose output is: 
 
-14 32 50 
-32 77 122 
-50 122 194 
+46 28 10 
+118 73 28 
+190 118 46  
 ```
 
 
