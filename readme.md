@@ -10,7 +10,7 @@ dotnet publish -r linux-x64
 2.Win:
 ```
 cd ./src/matrix
-dotnet publish
+dotnet publish -c Realese -r win-x64
 ```
 ## Example
 
